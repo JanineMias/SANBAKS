@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Homepage</string>
+    <string name="sandbaks">SANDBAKS</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="play">PLAY</string>
+    <string name="gmail_com">*@gmail.com</string>
+    <string name="account_creation">Account Creation</string>
+    <string name="confirm_password">CONFIRM PASSWORD:</string>
+    <string name="password">PASSWORD:</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="email_address">EMAIL ADDRESS:</string>
+    <string name="username">USERNAME:</string>
+    <string name="re_type_password_here">re-type password here</string>
+    <string name="your_in_game_name_here">your in game name here</string>
+    <string name="type_password_here">type password here</string>
+    <string name="back">BACK</string>
+    <string name="no_account_yet_sign_up_here">No account yet? Sign up here</string>
+    <string name="name_here">Name here</string>
+    <string name="log_in">LOG IN</string>
+    <string name="passwordSignIn">PASSWORD:</string>
+    <string name="usernameSignIn">USERNAME:</string>
+    <string name="password_here">Password here</string>
+    <string name="log_in_here">LOG IN HERE</string>
+</resources>
