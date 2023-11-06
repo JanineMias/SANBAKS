@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class account_setting extends AppCompatActivity {
@@ -17,6 +19,9 @@ public class account_setting extends AppCompatActivity {
     Button LogIn,back;
 
     SQLiteDatabase db;
+
+    public ImageView rotatePlanet;
+    public AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,8 @@ public class account_setting extends AppCompatActivity {
     public void init() {
 
         // database  method here
-
+        rotatePlanet = findViewById(R.id.ivPlanet);
+        animationDrawable = (AnimationDrawable) rotatePlanet.getDrawable();
 
         Username = findViewById(R.id.etUserName);
         password = findViewById(R.id.etPassword);
@@ -65,6 +71,10 @@ public class account_setting extends AppCompatActivity {
     private void SignUp() {
         Intent SignUp = new Intent(account_setting.this, account_creation.class);
         startActivity(SignUp);
+    }
+    public void onStart() {
+        super.onStart();
+        animationDrawable.start();
     }
 
 
