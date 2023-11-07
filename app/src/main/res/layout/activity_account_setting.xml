@@ -94,9 +94,10 @@
 
     <TextView
         android:id="@+id/tvSignUp"
-        android:layout_width="277dp"
-        android:layout_height="48dp"
+        android:layout_width="213dp"
+        android:layout_height="50dp"
         android:clickable="true"
+        android:gravity="center_horizontal|center_vertical"
         android:text="@string/no_account_yet_sign_up_here"
         android:textAlignment="center"
         android:textAllCaps="false"
