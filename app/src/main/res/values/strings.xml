@@ -21,4 +21,5 @@
     <string name="usernameSignIn">USERNAME:</string>
     <string name="password_here">Password here</string>
     <string name="log_in_here">LOG IN HERE</string>
+    <string name="password_here1">Password Here</string>
 </resources>

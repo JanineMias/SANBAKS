@@ -34,11 +34,11 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="404dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="150dp"
+        android:layout_width="207dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="#F1EBEB"
-        android:fontFamily="@font/pwshaded"
+        android:fontFamily="@font/supermilk"
         android:rotationX="4"
         android:shadowColor="#C4B3ED"
         android:text="@string/sandbaks"
@@ -46,11 +46,10 @@
         android:textColor="#FFFFFF"
         android:textColorHighlight="#040303"
         android:textColorLink="#F4EFEF"
-        android:textSize="80sp"
+        android:textSize="75sp"
         app:autoSizeTextType="none"
         app:layout_constraintBottom_toTopOf="@+id/btnPlay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45" />
