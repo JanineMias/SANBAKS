@@ -18,14 +18,15 @@
         app:layout_constraintHorizontal_bias="0.626"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/animation_file" />
+        app:srcCompat="@drawable/animation_file"
+        tools:ignore="VisualLintBounds" />
 
     <TextView
         android:id="@+id/tvIGN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Guest"
+        android:text="@string/guest"
         android:textColor="#F3F0F0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.153"
@@ -88,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="248dp"
-        android:text="WELCOME"
+        android:text="@string/welcome"
         android:textColor="#F6F4F4"
         app:layout_constraintBottom_toBottomOf="@+id/tvIGN"
         app:layout_constraintStart_toStartOf="parent"

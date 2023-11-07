@@ -62,6 +62,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#4BBBCA"
         android:text="@string/log_in"
+        android:textColor="#4527A0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBackAccountS"
@@ -76,7 +77,8 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/p1" />
+        app:srcCompat="@drawable/p1"
+        tools:ignore="VisualLintBounds" />
 
     <Button
         android:id="@+id/btnBackAccountS"
@@ -84,6 +86,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#4BBAC9"
         android:text="BACK"
+        android:textColor="#283593"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnLogIn"
         app:layout_constraintStart_toStartOf="parent"
