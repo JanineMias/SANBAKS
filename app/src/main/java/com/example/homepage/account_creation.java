@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -27,25 +26,15 @@ public class account_creation extends AppCompatActivity {
         getEmail = findViewById(R.id.etEmail);
         getPass = findViewById(R.id.etPass);
         getRePass = findViewById(R.id.etConfirmPass);
-        back = findViewById(R.id.btnBack);
+      //  back = findViewById(R.id.btnBack);
         createAccount = findViewById(R.id.btnCreateAccount);
 
         // adds information to database and goes back to home
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createAccount();
-            }
-        });
+        createAccount.setOnClickListener(v -> createAccount());
 
         //goes back to account setting/LogIn page
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                back();
-            }
-        });
+      //  back.setOnClickListener(v -> back());
 
     }
 

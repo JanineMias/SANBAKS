@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,8 +19,8 @@ public class account_setting extends AppCompatActivity {
 
     SQLiteDatabase db;
 
-    public ImageView rotatePlanet;
-    public AnimationDrawable animationDrawable;
+    public ImageView city;
+    public AnimationDrawable city_animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +33,20 @@ public class account_setting extends AppCompatActivity {
     public void init() {
 
         // database  method here
-        rotatePlanet = findViewById(R.id.ivPlanet);
-        animationDrawable = (AnimationDrawable) rotatePlanet.getDrawable();
+        city = findViewById(R.id.ivCity);
+        city_animation = (AnimationDrawable) city.getDrawable();
 
         Username = findViewById(R.id.etUserName);
         password = findViewById(R.id.etPassword);
         SignUp = findViewById(R.id.tvSignUp);
         LogIn = findViewById(R.id.btnLogIn);
-        back = findViewById(R.id.btnBackAccountS);
+      //  back = findViewById(R.id.btnBackAccountS);
 
         //if username and pass is correct then the user can log in
-        LogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LogIn();
-            }
-        });
+        LogIn.setOnClickListener(v -> LogIn());
 
         // goes to signup page
-        SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SignUp();
-            }
-        });
+        SignUp.setOnClickListener(v -> SignUp());
 }
     public void LogIn() {
             // fetch from database yung pass confirmation with naka switch case
@@ -74,8 +63,7 @@ public class account_setting extends AppCompatActivity {
     }
     public void onStart() {
         super.onStart();
-        animationDrawable.start();
+        city_animation.start();
     }
-
 
 }

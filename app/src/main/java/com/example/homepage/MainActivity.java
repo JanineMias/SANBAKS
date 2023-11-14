@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.content.Intent;
@@ -38,20 +37,10 @@ public class MainActivity extends AppCompatActivity {
         username = user.getText().toString();
 
         // goes to play the main game or tutorial page
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Play();
-            }
-        });
+        play.setOnClickListener(v -> Play());
 
         //goes to account setting page
-        account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AccountSettings();
-            }
-        });
+        account.setOnClickListener(v -> AccountSettings());
 
     }
     private void Play() {

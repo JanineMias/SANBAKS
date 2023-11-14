@@ -37,8 +37,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPlanet"
-        tools:ignore="TextSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/ivCity"
+        />
 
     <EditText
         android:id="@+id/etUsername"
@@ -56,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="MissingConstraints" />
+        />
 
     <Button
         android:id="@+id/btnLogIn"
@@ -69,19 +69,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBackAccountS"
         app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
-
-    <ImageView
-        android:id="@+id/ivPlanet"
-        android:layout_width="582dp"
-        android:layout_height="366dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/c00"
-        tools:ignore="VisualLintBounds"
-        android:importantForAccessibility="no" />
 
     <Button
         android:id="@+id/btnBackAccountS"
@@ -112,6 +99,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        tools:ignore="TextSizeCheck" />
+        />
+
+    <ImageView
+        android:id="@+id/ivCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/city"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/animation_city" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,4 +29,5 @@
     <string name="log_in_here1">log in here</string>
     <string name="sandbakstitle">sandbaks</string>
     <string name="account_creationlower">account creation</string>
+    <string name="city">city</string>
 </resources>
