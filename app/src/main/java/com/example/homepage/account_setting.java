@@ -40,7 +40,7 @@ public class account_setting extends AppCompatActivity {
         password = findViewById(R.id.etPassword);
         SignUp = findViewById(R.id.tvSignUp);
         LogIn = findViewById(R.id.btnLogIn);
-      //  back = findViewById(R.id.btnBackAccountS);
+        back = findViewById(R.id.btnBackAccountS);
 
         //if username and pass is correct then the user can log in
         LogIn.setOnClickListener(v -> LogIn());

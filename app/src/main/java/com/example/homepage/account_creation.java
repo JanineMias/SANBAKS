@@ -34,7 +34,7 @@ public class account_creation extends AppCompatActivity {
 
         //goes back to account setting/LogIn page
 
-      //  back.setOnClickListener(v -> back());
+        back.setOnClickListener(v -> back());
 
     }
 
