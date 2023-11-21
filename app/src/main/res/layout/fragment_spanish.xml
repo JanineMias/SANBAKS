@@ -4,16 +4,16 @@
     android:id="@+id/spanishFrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E6BF0B1B"
     android:textAlignment="center"
     tools:context=".spanishFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#C50E0E"
+        android:layout_height="wrap_content"
         android:text="@string/spanish_era"
         android:textAlignment="center"
-        android:textColor="#B3E5FC" />
+        android:textColor="#E1F5FE" />
 
 </FrameLayout>

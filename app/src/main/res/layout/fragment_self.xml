@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/selfFrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#586EEC"
+    android:background="#E6F1C914"
+    android:foregroundGravity="fill"
+    android:foregroundTintMode="add"
     tools:context=".selfFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="366dp"
-        android:layout_height="42dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/philippine_commonwealth_self_rule"
         android:textAlignment="center"
-        android:textColor="#000000" />
+        android:textColor="#424242" />
 
 </FrameLayout>

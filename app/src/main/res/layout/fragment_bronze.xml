@@ -4,15 +4,15 @@
     android:id="@+id/bronzeFrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9800"
+    android:background="#E6C67B30"
     tools:context=".bronzeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/bronze_age"
         android:textAlignment="center"
-        android:textColor="#424242" />
+        android:textColor="#3E2723" />
 
 </FrameLayout>

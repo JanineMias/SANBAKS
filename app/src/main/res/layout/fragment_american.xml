@@ -4,15 +4,15 @@
     android:id="@+id/americaFrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6DE09"
+    android:background="#E6002665"
     tools:context=".americanFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFEB3B"
+        android:layout_height="wrap_content"
         android:text="@string/american_era"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#B39DDB" />
 
 </FrameLayout>

@@ -4,16 +4,16 @@
     android:id="@+id/ironFrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E65B5B5B"
     android:textAlignment="center"
     tools:context=".ironFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#5E5B5B"
+        android:layout_height="wrap_content"
         android:text="@string/iron_age"
         android:textAlignment="center"
-        android:textColor="#CFD8DC" />
+        android:textColor="#ECEFF1" />
 
 </FrameLayout>
