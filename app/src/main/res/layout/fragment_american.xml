@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/americaFrag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6DE09"
+    tools:context=".americanFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFEB3B"
+        android:text="@string/american_era"
+        android:textAlignment="center" />
+
+</FrameLayout>

@@ -42,6 +42,8 @@ public class account_setting extends AppCompatActivity {
         LogIn = findViewById(R.id.btnLogIn);
         back = findViewById(R.id.btnBackAccountS);
 
+        // back to homepage
+        back.setOnClickListener(v -> back());
         //if username and pass is correct then the user can log in
         LogIn.setOnClickListener(v -> LogIn());
 
@@ -60,6 +62,10 @@ public class account_setting extends AppCompatActivity {
     private void SignUp() {
         Intent SignUp = new Intent(account_setting.this, account_creation.class);
         startActivity(SignUp);
+    }
+    private void back() {
+        Intent back = new Intent(account_setting.this, MainActivity.class);
+        startActivity(back);
     }
     public void onStart() {
         super.onStart();
