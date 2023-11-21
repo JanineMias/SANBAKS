@@ -5,4 +5,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0C051D"
-    tools:context=".playgame"/>
+
+    tools:context=".playgame">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="250dp"
+        android:background="#0C051D"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="703dp"
+            android:background="#0C051D"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnStone"
+                style="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="#1CAFAF"
+                android:contextClickable="true"
+                android:padding="1dp"
+                android:text="Stone Age"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#171617"
+                android:textSize="16sp"
+                app:iconPadding="0dp"
+                tools:text="Stone Age" />
+
+            <Button
+                android:id="@+id/btnBronze"
+                style="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="#1CB0B0"
+                android:includeFontPadding="false"
+                android:padding="4dp"
+                android:text="Bronze Age"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#040303"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnIron"
+                style="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="#1CAFAF"
+                android:padding="5dp"
+                android:text="Iron Age"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnSpanish"
+                style="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="#1CAEAE"
+                android:padding="5dp"
+                android:text="Spanish Era"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnAmerica"
+                style="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="#1CADAD"
+                android:padding="5dp"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:text="American Era"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btnJapan"
+                style="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="#1CADAD"
+                android:padding="5dp"
+                android:text="Japan Era"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnSelf"
+                style="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="#1CACAC"
+                android:padding="5dp"
+                android:text="Self Rule"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="com.example.homepage.stoneFragment"
+            android:layout_width="95dp"
+            android:layout_height="703dp"
+            tools:layout="@layout/fragment_stone" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ public class account_creation extends AppCompatActivity {
         getEmail = findViewById(R.id.etEmail);
         getPass = findViewById(R.id.etPass);
         getRePass = findViewById(R.id.etConfirmPass);
-      //  back = findViewById(R.id.btnBack);
+        back = findViewById(R.id.btnBack);
         createAccount = findViewById(R.id.btnCreateAccount);
 
         // adds information to database and goes back to home
