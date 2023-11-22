@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/spanishFrag"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6BF0B1B"
-    android:textAlignment="center"
-    tools:context=".spanishFragment">
+    android:background="#C42331">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/spanishFrag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/spanish_era"
+        android:background="#E6BF0B1B"
         android:textAlignment="center"
-        android:textColor="#E1F5FE" />
+        tools:context=".spanishFragment">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/spanish_era"
+            android:textAlignment="center"
+            android:textColor="#E1F5FE" />
+
+    </FrameLayout>
+</ScrollView>

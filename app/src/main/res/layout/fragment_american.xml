@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/americaFrag"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6002665"
-    tools:context=".americanFragment">
+    android:background="#002665">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/americaFrag"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/american_era"
-        android:textAlignment="center"
-        android:textColor="#B39DDB" />
+        android:background="#E6002665"
+        tools:context=".americanFragment">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/american_era"
+            android:textAlignment="center"
+            android:textColor="#B39DDB" />
+
+    </FrameLayout>
+
+</ScrollView>

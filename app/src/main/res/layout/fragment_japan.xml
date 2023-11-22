@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/japanFrag"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6FFFFFF"
-    tools:context=".japanFragment">
+    android:background="#FEFAFD">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/japanFrag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/japanese_occupation"
-        android:textAlignment="center" />
+        android:background="#E6FFFFFF"
+        tools:context=".japanFragment">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/japanese_occupation"
+            android:textAlignment="center" />
+
+    </FrameLayout>
+
+</ScrollView>

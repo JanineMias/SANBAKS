@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ironFrag"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E65B5B5B"
-    android:textAlignment="center"
-    tools:context=".ironFragment">
+    android:background="#5D5D5D">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ironFrag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/iron_age"
+        android:background="#E65B5B5B"
         android:textAlignment="center"
-        android:textColor="#ECEFF1" />
+        tools:context=".ironFragment">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/iron_age"
+            android:textAlignment="center"
+            android:textColor="#ECEFF1" />
+
+    </FrameLayout>
+</ScrollView>
