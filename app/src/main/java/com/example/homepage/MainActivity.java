@@ -4,25 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.TextView;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    public boolean isLoggedIn = false;
     public ImageView space;
     public AnimationDrawable animationDrawable;
 
     public Button play, account;
 
-    SQLiteDatabase db;
-
     String username;
     TextView user;
+
+    DBHelper dbHelper = new DBHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
    private void Play() {
+       Intent receivedIntent = getIntent();
+
+       if (!receivedIntent.hasExtra("isLoggedIn")) Log.e("isLoggedIn", "Not yet logged In");
+
+       isLoggedIn = receivedIntent.getBooleanExtra("isLoggedIn", false);
+
+       if (!isLoggedIn){
+           Toast.makeText(this, "Login your account first!", Toast.LENGTH_SHORT).show();
+           return;
+       }
+
         Intent playGame = new Intent(MainActivity.this, playgame.class);
         startActivity(playGame);
     }
@@ -59,19 +69,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(accountSet);
     }
 
-
     public void onStart() {
         super.onStart();
         animationDrawable.start();
-        initDB();
-    }
-
-    public void initDB() {
-        db = openOrCreateDatabase("UserDatabase", Context.MODE_PRIVATE, null);
-        db.execSQL("DROP TABLE IF EXISTS UserDatabase;");
-        db.execSQL("CREATE TABLE IF NOT EXISTS UserDatabase (UserID TEXT PRIMARY KEY, UserName TEXT, UserPass TEXT, GameProgress INTEGER);");
-
-        // pano ihash yung password?
-
+        dbHelper.initDB(this);
     }
 }
