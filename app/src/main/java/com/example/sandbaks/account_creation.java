@@ -1,4 +1,4 @@
-package com.example.homepage;
+package com.example.sandbaks;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,13 +51,11 @@ public class account_creation extends AppCompatActivity {
 
     public boolean emailChecker(String email){
 
-        // Define the regular expression for a valid email address
+        // Email Validity using REGEX
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-        // Create a Pattern object
         Pattern pattern = Pattern.compile(emailRegex);
 
-        // Create a matcher object
         Matcher matcher = pattern.matcher(email);
 
         // Return true if the email address is valid, else false

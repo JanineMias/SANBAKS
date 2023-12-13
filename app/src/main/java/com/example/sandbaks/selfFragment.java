@@ -1,4 +1,4 @@
-package com.example.homepage;
+package com.example.sandbaks;
 
 import android.os.Bundle;
 
@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link spanishFragment#newInstance} factory method to
+ * Use the {@link selfFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class spanishFragment extends Fragment {
+public class selfFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class spanishFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public spanishFragment() {
+    public selfFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class spanishFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment spanishFragment.
+     * @return A new instance of fragment selfFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static spanishFragment newInstance(String param1, String param2) {
-        spanishFragment fragment = new spanishFragment();
+    public static selfFragment newInstance(String param1, String param2) {
+        selfFragment fragment = new selfFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +59,6 @@ public class spanishFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spanish, container, false);
+        return inflater.inflate(R.layout.fragment_self, container, false);
     }
 }

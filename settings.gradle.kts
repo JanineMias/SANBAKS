@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Homepage"
+rootProject.name = "SANDBAKS"
 include(":app")
  

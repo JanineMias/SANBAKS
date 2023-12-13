@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.homepage"
+    namespace = "com.example.sandbaks"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.homepage"
+        applicationId = "com.example.sandbaks"
         minSdk = 33
         targetSdk = 34
         versionCode = 1
