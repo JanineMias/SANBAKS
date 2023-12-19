@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="#E65B5B5B"
         android:textAlignment="center"
-        tools:context=".ironFragment">
+        tools:context=".IronFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

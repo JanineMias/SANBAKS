@@ -7,7 +7,7 @@
     android:background="#0C051D"
 
     android:visibility="visible"
-    tools:context=".playgame">
+    tools:context=".PlayGame">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -151,7 +151,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
-            android:name="com.example.sandbaks.stoneFragment"
+            android:name="com.example.sandbaks.StoneFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible"

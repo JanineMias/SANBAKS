@@ -12,7 +12,7 @@
         android:background="#E6F1C914"
         android:foregroundGravity="fill"
         android:foregroundTintMode="add"
-        tools:context=".selfFragment">
+        tools:context=".SelfFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
