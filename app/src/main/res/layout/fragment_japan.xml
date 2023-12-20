@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#E6FFFFFF"
-        tools:context=".japanFragment">
+        tools:context=".JapanFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

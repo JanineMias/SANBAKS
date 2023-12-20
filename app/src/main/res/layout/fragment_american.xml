@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#E6002665"
-        tools:context=".americanFragment">
+        tools:context=".AmericanFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

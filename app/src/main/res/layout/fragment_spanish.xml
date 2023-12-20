@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="#E6BF0B1B"
         android:textAlignment="center"
-        tools:context=".spanishFragment">
+        tools:context=".SpanishFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

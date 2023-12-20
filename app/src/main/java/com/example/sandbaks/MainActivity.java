@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
            return;
        }
 
-        Intent playGame = new Intent(MainActivity.this, playgame.class);
+        Intent playGame = new Intent(MainActivity.this, PlayGame.class);
         startActivity(playGame);
     }
 
 
     private void AccountSettings() {
-        Intent accountSet = new Intent(MainActivity.this, account_setting.class);
+        Intent accountSet = new Intent(MainActivity.this, AccountSetting.class);
         startActivity(accountSet);
     }
 

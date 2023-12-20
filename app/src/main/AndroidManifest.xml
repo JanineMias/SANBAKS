@@ -14,13 +14,13 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".playgame"
+            android:name=".PlayGame"
             android:exported="false" />
         <activity
-            android:name=".account_creation"
+            android:name=".AccountCreation"
             android:exported="false" />
         <activity
-            android:name=".account_setting"
+            android:name=".AccountSetting"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
