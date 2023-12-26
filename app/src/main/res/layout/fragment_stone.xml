@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F1E1D0">
 
-    <FrameLayout
-        android:id="@+id/stoneFrag"
+    <TextView
+        android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E6F1DFCC"
-        tools:context=".StoneFragment">
+        android:text="@string/stone_age"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:layout_alignParentTop="true" />
 
-        <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text1">
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/stoneFrag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:baselineAligned="false"
-            android:orientation="vertical"
-            android:textAlignment="center">
+            android:layout_height="wrap_content"
+            android:background="#E6F1DFCC"
+            tools:context=".StoneFragment">
 
-            <TextView
-                android:id="@+id/text1"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/stone_age"
-                android:textAlignment="center"
-                android:textColor="#3F51B5" />
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="vertical"
+                android:textAlignment="center">
 
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/stoneAgeRView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-    </FrameLayout>
+            </LinearLayout>
 
-</ScrollView>
+        </FrameLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
