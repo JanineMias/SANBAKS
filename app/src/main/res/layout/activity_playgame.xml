@@ -11,15 +11,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="26dp"
-        android:layout_height="719dp"
-        android:layout_marginEnd="234dp"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="250dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.125">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,7 +101,7 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#000000"
-                android:textSize="11sp"
+                android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <Button

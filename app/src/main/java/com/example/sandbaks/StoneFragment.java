@@ -1,12 +1,22 @@
 package com.example.sandbaks;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +24,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class StoneFragment extends Fragment {
+
+    ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,10 +67,52 @@ public class StoneFragment extends Fragment {
         }
     }
 
+    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stone, container, false);
+        view =  inflater.inflate(R.layout.fragment_stone, container, false);
+
+        setupStoneAge();
+
+        RecyclerView recyclerView = view.findViewById(R.id.stoneAgeRView);
+
+        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList);
+
+        recyclerView.setAdapter(adapter);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.context));
+
+        return view;
+    }
+
+
+    private void setupStoneAge(){
+        String[] itemNames = getResources().getStringArray(R.array.stone_age_items);
+        String[] itemImageFileName = {
+                "Air.png", "Animal.png", "Animal Skin.png", "Ash.png", "Atmosphere.png", "Barangay.png", "Clay.png",
+                "Clothing.png", "Clouds.png", "Family.png", "Fire.png", "Glass.png", "Human.png", "Lake.png",
+                "Land.png", "Mining.png", "Mountain.png", "Mud.png", "Ocean.png", "Outer Space.png", "Paper.png",
+                "Rain.png", "Sand.png", "Sea.png", "Soil.png", "Stone.png", "Stone House.png", "Stone Tools.png",
+                "Time.png", "Torch.png", "Vapor.png", "Volcano.png", "Water.png", "Wood.png"
+        };
+
+
+
+        for(int i = 0; i<itemNames.length; i++){
+            try {
+                itemCardsArrayList.add(
+                        new ItemCards(
+                                itemNames[i],
+                                Utils.getBitmapFromAssets("1. Stone Age/"+itemImageFileName[i])));
+            }
+
+            catch (IOException e){
+                Log.e("Failed to get Image", e.toString());
+            }
+
+        }
     }
 }

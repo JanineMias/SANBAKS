@@ -45,8 +45,8 @@ public class ElementsCombination {
         combinations.put(new String[]{"Animal Skin", "Stone Tools"}, new String[]{"Clothing"});
         combinations.put(new String[]{"Wood", "Water"}, new String[]{"Paper"});
         combinations.put(new String[]{"Human", "Human"}, new String[]{"Family"});
-        combinations.put(new String[]{"Stone", "Mining"}, new String[]{"Minerals"});
-        combinations.put(new String[]{"Fire", "Minerals"}, new String[]{"Metallurgy"});
+        combinations.put(new String[]{"Stone", "Mining"}, new String[]{"Mineral"});
+        combinations.put(new String[]{"Fire", "Mineral"}, new String[]{"Metallurgy"});
         combinations.put(new String[]{"Mineral", "Stone Tools"}, new String[]{"Copper"});
         combinations.put(new String[]{"Family", "Family"}, new String[]{"Barangay"});
         combinations.put(new String[]{"Lake", "Lake"}, new String[]{"Sea"});

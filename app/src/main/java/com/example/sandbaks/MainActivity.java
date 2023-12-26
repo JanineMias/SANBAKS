@@ -1,7 +1,13 @@
 package com.example.sandbaks;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,17 +17,20 @@ import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     public boolean isLoggedIn = false;
     public ImageView space;
     public AnimationDrawable animationDrawable;
-
     public Button play, account;
-
     String username;
     TextView user;
-
     DBHelper dbHelper = new DBHelper();
+
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void init() {
+
+        context = MainActivity.this;
+
         space = findViewById(R.id.background);
         animationDrawable = (AnimationDrawable) space.getDrawable();
         play = findViewById(R.id.btnPlay);
@@ -45,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         //goes to account setting page
         account.setOnClickListener(v -> AccountSettings());
-
     }
    private void Play() {
        Intent receivedIntent = getIntent();

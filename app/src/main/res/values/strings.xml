@@ -33,6 +33,45 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="stone_age">Stone Age</string>
+    <string-array name="stone_age_items">
+        <item>Air</item>
+        <item>Animal</item>
+        <item>Animal skin</item>
+        <item>Ash</item>
+        <item>Atmosphere</item>
+        <item>Barangay</item>
+        <item>Clay</item>
+        <item>Clothing</item>
+        <item>Clouds</item>
+<!--        <item>Copper</item> NO ICON-->
+        <item>Family</item>
+        <item>Fire</item>
+        <item>Glass</item>
+        <item>Human</item>
+        <item>Lake</item>
+        <item>Land</item>
+<!--        <item>Metallurgy</item> NO ICON-->
+<!--        <item>Mineral</item> NO ICON-->
+        <item>Mining</item>
+        <item>Mountain</item>
+        <item>Mud</item>
+        <item>Ocean</item>
+        <item>Outer Space</item>
+        <item>Paper</item>
+        <item>Rain</item>
+        <item>Sand</item>
+        <item>Sea</item>
+        <item>Soil</item>
+        <item>Stone</item>
+        <item>Stone House</item>
+        <item>Stone Tools</item>
+        <item>Time</item>
+        <item>Torch</item>
+        <item>Vapor</item>
+        <item>Volcano</item>
+        <item>Water</item>
+        <item>Wood</item>
+    </string-array>
     <string name="bronze_age">Bronze Age</string>
     <string name="iron_age">Iron Age</string>
     <string name="spanish_era">Spanish Era</string>
