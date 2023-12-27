@@ -36,22 +36,22 @@
     <string-array name="stone_age_items">
         <item>Air</item>
         <item>Animal</item>
-        <item>Animal skin</item>
+        <item>Animal Skin</item>
         <item>Ash</item>
         <item>Atmosphere</item>
         <item>Barangay</item>
         <item>Clay</item>
         <item>Clothing</item>
         <item>Clouds</item>
-<!--        <item>Copper</item> NO ICON-->
+        <item>Copper</item>
         <item>Family</item>
         <item>Fire</item>
         <item>Glass</item>
         <item>Human</item>
         <item>Lake</item>
         <item>Land</item>
-<!--        <item>Metallurgy</item> NO ICON-->
-<!--        <item>Mineral</item> NO ICON-->
+        <item>Metallurgy</item>
+<!--        <item>Mineral</item> ???-->
         <item>Mining</item>
         <item>Mountain</item>
         <item>Mud</item>

@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Use the {@link StoneFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StoneFragment extends Fragment {
+public class StoneFragment extends Fragment implements ItemRecyclerViewInterface{
 
     ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
 
@@ -79,7 +79,7 @@ public class StoneFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.stoneAgeRView);
 
-        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList);
+        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList, this);
 
         recyclerView.setAdapter(adapter);
 
@@ -91,28 +91,22 @@ public class StoneFragment extends Fragment {
 
     private void setupStoneAge(){
         String[] itemNames = getResources().getStringArray(R.array.stone_age_items);
-        String[] itemImageFileName = {
-                "Air.png", "Animal.png", "Animal Skin.png", "Ash.png", "Atmosphere.png", "Barangay.png", "Clay.png",
-                "Clothing.png", "Clouds.png", "Family.png", "Fire.png", "Glass.png", "Human.png", "Lake.png",
-                "Land.png", "Mining.png", "Mountain.png", "Mud.png", "Ocean.png", "Outer Space.png", "Paper.png",
-                "Rain.png", "Sand.png", "Sea.png", "Soil.png", "Stone.png", "Stone House.png", "Stone Tools.png",
-                "Time.png", "Torch.png", "Vapor.png", "Volcano.png", "Water.png", "Wood.png"
-        };
-
-
 
         for(int i = 0; i<itemNames.length; i++){
             try {
                 itemCardsArrayList.add(
                         new ItemCards(
                                 itemNames[i],
-                                Utils.getBitmapFromAssets("1. Stone Age/"+itemImageFileName[i])));
+                                Utils.getBitmapFromAssets("1. Stone Age/"+itemNames[i]+".png")));
             }
 
             catch (IOException e){
                 Log.e("Failed to get Image", e.toString());
             }
-
         }
+    }
+    @Override
+    public void onItemSelected(int position) {
+
     }
 }

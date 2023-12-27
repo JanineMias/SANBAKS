@@ -9,14 +9,35 @@
     android:visibility="visible"
     tools:context=".PlayGame">
 
+    <!-- SIDEBAR -->
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="30dp"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="250dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sidebarButtons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="com.example.sandbaks.StoneFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:layout="@layout/fragment_stone" />
+    </LinearLayout>
+
+    <!-- SIDEBAR BUTTONS-->
+    <LinearLayout
+        android:id="@+id/sidebarButtons"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -135,25 +156,6 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
-            android:name="com.example.sandbaks.StoneFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"
-            tools:layout="@layout/fragment_stone" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
