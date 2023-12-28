@@ -3,6 +3,8 @@ package com.example.sandbaks;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -15,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
     public Button stone, bronze, iron, spanish, american, japan, self;
@@ -34,6 +39,7 @@ public class PlayGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playgame);
+        setupRecyclerView();
         init ();
     }
     @Override
@@ -216,5 +222,74 @@ public class PlayGame extends AppCompatActivity {
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) sidebar.getLayoutParams();
         layoutParams.setMarginStart(margin);
         sidebar.setLayoutParams(layoutParams);
+    }
+
+    private void setupRecyclerView() {
+
+        RecyclerView dropArea = findViewById(R.id.dropSpace);
+
+        GridLayoutManager grid = new GridLayoutManager(this, 5);
+
+        // This is just a test place holder, 200 PLACE HOLDER
+        // Set up your data (list of drawables or other data)
+        List<Integer> dataList = Arrays.asList(
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
+                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron
+                );
+
+        dropArea.setLayoutManager(grid);
+
+        DropAreaAdapter adapter = new DropAreaAdapter(this, dataList);
+
+        dropArea.setAdapter(adapter);
+
     }
 }
