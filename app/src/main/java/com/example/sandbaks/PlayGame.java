@@ -2,6 +2,7 @@ package com.example.sandbaks;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +20,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +30,8 @@ public class PlayGame extends AppCompatActivity {
     private boolean openSidebar;
     private String currentMenu = "None";
     LinearLayout sidebar;
+
+    ArrayList<ItemCards> itemsOnScreen = new ArrayList<>();
 
     // menu setup
     @Override
@@ -225,69 +231,20 @@ public class PlayGame extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-
         RecyclerView dropArea = findViewById(R.id.dropSpace);
-
-        GridLayoutManager grid = new GridLayoutManager(this, 5);
-
-        // This is just a test place holder, 200 PLACE HOLDER
-        // Set up your data (list of drawables or other data)
-        List<Integer> dataList = Arrays.asList(
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron
-                );
+        GridLayoutManager grid = new GridLayoutManager(this, 4);
 
         dropArea.setLayoutManager(grid);
 
-        DropAreaAdapter adapter = new DropAreaAdapter(this, dataList);
+
+        for(int i=0; i<200; i++){
+            itemsOnScreen.add(
+                    new ItemCards(
+                            " ",
+                            Utils.createEmptyBitmap()));
+        }
+
+        DropAreaAdapter adapter = new DropAreaAdapter(this, itemsOnScreen);
 
         dropArea.setAdapter(adapter);
 

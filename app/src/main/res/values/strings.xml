@@ -51,7 +51,7 @@
         <item>Lake</item>
         <item>Land</item>
         <item>Metallurgy</item>
-<!--        <item>Mineral</item> ???-->
+        <item>Mineral</item> ???
         <item>Mining</item>
         <item>Mountain</item>
         <item>Mud</item>
@@ -72,11 +72,104 @@
         <item>Water</item>
         <item>Wood</item>
     </string-array>
+
     <string name="bronze_age">Bronze Age</string>
+    <string-array name="bronze_age_items">
+        <item>Axle</item>
+        <item>Brick</item>
+        <item>Bronze Tools</item>
+        <item>Car</item>
+        <item>City</item>
+        <item>Farm</item>
+        <item>Field</item>
+        <item>Food Stock</item>
+        <item>Fossil Fuel</item>
+        <item>Light</item>
+        <item>Meteor</item>
+        <item>Nation</item>
+        <item>Wheel</item>
+    </string-array>
+
     <string name="iron_age">Iron Age</string>
+    <string-array name="iron_age_items">
+        <item>Beads</item>
+        <item>Coins</item>
+        <item>Farming Tools</item>
+        <item>Mallet</item>
+        <item>Smithing</item>
+        <item>Soldiers</item>
+        <item>Steel</item>
+        <item>Trade</item>
+        <item>Weaponry</item>
+    </string-array>
+
     <string name="spanish_era">Spanish Era</string>
+    <string-array name="spanish_era_items">
+        <item>Bahay Kubo</item>
+        <item>Book</item>
+        <item>Church</item>
+        <item>Convent</item>
+        <item>Curanderos</item>
+        <item>Hospital</item>
+        <item>Medicine</item>
+        <item>Nipa Leaf</item>
+        <item>Parish</item>
+        <item>Plane</item>
+        <item>Plants</item>
+        <item>Religion</item>
+        <item>Religious Text</item>
+        <item>Scholar</item>
+        <item>Spaniards</item>
+        <item>Teachers</item>
+    </string-array>
+
     <string name="american_era">American Era</string>
+    <string-array name="american_era_items">
+        <item>Abacus</item>
+        <item>Architecture</item>
+        <item>Boat</item>
+        <item>Computer</item>
+        <item>English</item>
+        <item>Pager</item>
+        <item>Port</item>
+        <item>Processed Food</item>
+        <item>Rail</item>
+        <item>Road</item>
+    </string-array>
+
     <string name="japanese_occupation">Japanese Occupation</string>
+    <string-array name="japanese_occupation_items">
+        <item>Cotton</item>
+        <item>Democracy</item>
+        <item>Filipino Literature</item>
+        <item>Filipino</item>
+        <item>Guerilla</item>
+        <item>Independence</item>
+        <item>Japanese</item>
+        <item>Literature</item>
+        <item>Mickey Mouse Money</item>
+        <item>Poems</item>
+        <item>Politics</item>
+        <item>Puppet Government</item>
+        <item>US Army</item>
+    </string-array>
+
     <string name="philippine_commonwealth_self_rule">Philippine Commonwealth (Self Rule)</string>
+    <string-array name="philippine_commonwealth_items">
+        <item>Artificial Intelligence</item>
+        <item>Camera</item>
+        <item>PC Chip</item>
+        <item>Quantum</item>
+        <item>Rocket</item>
+        <item>Salt Light</item>
+        <item>Satellite</item>
+        <item>Screen</item>
+        <item>Smart Phone</item>
+        <item>Technology</item>
+        <item>Telephone</item>
+        <item>Television</item>
+        <item>Videophone</item>
+    </string-array>
+
     <string name="a_journey_through_time">A Journey Through Time</string>
 </resources>

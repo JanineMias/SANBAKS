@@ -3,17 +3,25 @@ package com.example.sandbaks;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SpanishFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpanishFragment extends Fragment {
+public class SpanishFragment extends Fragment implements ItemRecyclerViewInterface {
+
+    ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,10 +63,44 @@ public class SpanishFragment extends Fragment {
         }
     }
 
+    View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spanish, container, false);
+        view = inflater.inflate(R.layout.fragment_spanish, container, false);
+
+        setupSpanishAge();
+
+        RecyclerView recyclerView = view.findViewById(R.id.spanishAgeRView);
+
+        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList, this);
+
+        recyclerView.setAdapter(adapter);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.context));
+
+        return view;
+    }
+
+    private void setupSpanishAge(){
+        String[] itemNames = getResources().getStringArray(R.array.spanish_era_items);
+
+        for(int i = 0; i<itemNames.length; i++){
+            try {
+                itemCardsArrayList.add(
+                        new ItemCards(
+                                itemNames[i],
+                                Utils.getBitmapFromAssets(itemNames[i]+".png")));
+            }
+
+            catch (IOException e){
+                Log.e("Failed to get Image", e.toString());
+            }
+        }
+    }
+    @Override
+    public void onItemSelected(int position) {
+
     }
 }

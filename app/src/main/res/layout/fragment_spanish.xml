@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C42331">
 
-    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/spanishFrag"
+    <TextView
+        android:id="@+id/text4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E6BF0B1B"
+        android:text="@string/spanish_era"
         android:textAlignment="center"
-        tools:context=".SpanishFragment">
+        android:textColor="#E1F5FE" />
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text4">
+
+        <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/spanishFrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/spanish_era"
+            android:background="#E6BF0B1B"
             android:textAlignment="center"
-            android:textColor="#E1F5FE" />
+            tools:context=".SpanishFragment">
 
-    </FrameLayout>
-</ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:textAlignment="center">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/spanishAgeRView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+</RelativeLayout>

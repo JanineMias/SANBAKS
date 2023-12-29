@@ -97,7 +97,7 @@ public class StoneFragment extends Fragment implements ItemRecyclerViewInterface
                 itemCardsArrayList.add(
                         new ItemCards(
                                 itemNames[i],
-                                Utils.getBitmapFromAssets("1. Stone Age/"+itemNames[i]+".png")));
+                                Utils.getBitmapFromAssets(itemNames[i]+".png")));
             }
 
             catch (IOException e){

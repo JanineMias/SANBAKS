@@ -71,9 +71,12 @@ public class ItemRecyclerViewAdapater extends RecyclerView.Adapter<ItemRecyclerV
                             View.DragShadowBuilder dragShadowBuilder = new View.DragShadowBuilder(view);
                             clipData = ClipData.newPlainText(itemName.getText().toString(),null);
 
+                            Utils.itemName = itemName.getText().toString();
+                            Utils.itemIcon = Utils.getBitmapFromImageView(itemIcon);
+
                             view.startDrag(clipData,dragShadowBuilder,view,0);
 
-                            return true; // Return true to indicate that the long click event is consumed.
+                            return true;
                         }
                     }
                     return false;
