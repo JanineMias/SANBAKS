@@ -1,5 +1,6 @@
 package com.example.sandbaks;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
@@ -55,6 +56,8 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
             itemIcon = itemView.findViewById(R.id.itemIcon);
             itemName = itemView.findViewById(R.id.itemName);
 
+
+            // Drag Item from sidebar to screen
             itemView.setOnDragListener(new View.OnDragListener() {
                 @Override
                 public boolean onDrag(View view, DragEvent dragEvent) {
@@ -111,6 +114,38 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
                     }
 
                     return true;
+                }
+            });
+
+
+            // DRAG THE ITEM TO A DIFFERENT POSITION
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position = getAdapterPosition();
+
+                    if (position != RecyclerView.NO_POSITION){
+                        ClipData clipData;
+                        View.DragShadowBuilder dragShadowBuilder = new View.DragShadowBuilder(view);
+                        clipData = ClipData.newPlainText(itemName.getText().toString(), null);
+
+
+                        String newName = " ";
+                        Bitmap newIcon = Utils.createEmptyBitmap();
+
+                        Utils.itemName = itemName.getText().toString();
+                        Utils.itemIcon = Utils.getBitmapFromImageView(itemIcon);
+
+                        ItemCards updatedItem = new ItemCards(newName, newIcon);
+                        itemCardsArrayList.set(position, updatedItem);
+
+                        view.startDrag(clipData, dragShadowBuilder, view, 0);
+
+                        notifyDataSetChanged();
+
+                        return true;
+                    }
+                    return false;
                 }
             });
         }

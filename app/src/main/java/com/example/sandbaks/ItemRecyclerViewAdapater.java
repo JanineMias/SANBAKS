@@ -82,8 +82,6 @@ public class ItemRecyclerViewAdapater extends RecyclerView.Adapter<ItemRecyclerV
                     return false;
                 }
             });
-
-
         }
     }
 }
