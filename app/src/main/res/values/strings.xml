@@ -44,6 +44,7 @@
         <item>Clothing</item>
         <item>Clouds</item>
         <item>Copper</item>
+        <item>Corpse</item>
         <item>Family</item>
         <item>Fire</item>
         <item>Glass</item>
@@ -51,7 +52,7 @@
         <item>Lake</item>
         <item>Land</item>
         <item>Metallurgy</item>
-        <item>Mineral</item> ???
+        <item>Mineral</item>
         <item>Mining</item>
         <item>Mountain</item>
         <item>Mud</item>
@@ -62,6 +63,7 @@
         <item>Sand</item>
         <item>Sea</item>
         <item>Soil</item>
+        <item>Steam</item>
         <item>Stone</item>
         <item>Stone House</item>
         <item>Stone Tools</item>
@@ -87,6 +89,7 @@
         <item>Light</item>
         <item>Meteor</item>
         <item>Nation</item>
+        <item>Steel</item>
         <item>Wheel</item>
     </string-array>
 
@@ -98,13 +101,13 @@
         <item>Mallet</item>
         <item>Smithing</item>
         <item>Soldiers</item>
-        <item>Steel</item>
         <item>Trade</item>
         <item>Weaponry</item>
     </string-array>
 
     <string name="spanish_era">Spanish Era</string>
     <string-array name="spanish_era_items">
+        <item>Abacus</item>
         <item>Bahay Kubo</item>
         <item>Book</item>
         <item>Church</item>
@@ -121,11 +124,11 @@
         <item>Scholar</item>
         <item>Spaniards</item>
         <item>Teachers</item>
+        <item>Telephone</item>
     </string-array>
 
     <string name="american_era">American Era</string>
     <string-array name="american_era_items">
-        <item>Abacus</item>
         <item>Architecture</item>
         <item>Boat</item>
         <item>Computer</item>
@@ -156,6 +159,7 @@
 
     <string name="philippine_commonwealth_self_rule">Philippine Commonwealth (Self Rule)</string>
     <string-array name="philippine_commonwealth_items">
+
         <item>Artificial Intelligence</item>
         <item>Camera</item>
         <item>PC Chip</item>
@@ -166,7 +170,6 @@
         <item>Screen</item>
         <item>Smart Phone</item>
         <item>Technology</item>
-        <item>Telephone</item>
         <item>Television</item>
         <item>Videophone</item>
     </string-array>

@@ -63,6 +63,9 @@ public class ItemRecyclerViewAdapater extends RecyclerView.Adapter<ItemRecyclerV
                 @Override
                 public boolean onLongClick(View view) {
                     if (itemRecyclerViewInterface != null) {
+
+                        PlayGame.closeSideBar();
+
                         int position = getAdapterPosition();
 
                         if (position != RecyclerView.NO_POSITION) {

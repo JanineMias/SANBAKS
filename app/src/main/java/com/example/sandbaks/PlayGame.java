@@ -27,9 +27,9 @@ import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
     public Button stone, bronze, iron, spanish, american, japan, self;
-    private boolean openSidebar;
+    private static boolean openSidebar;
     private String currentMenu = "None";
-    LinearLayout sidebar;
+    static LinearLayout sidebar;
 
     ArrayList<ItemCards> itemsOnScreen = new ArrayList<>();
 
@@ -46,7 +46,8 @@ public class PlayGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playgame);
         setupRecyclerView();
-        init ();
+        PlayerData.initialItems();
+        init();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -205,8 +206,13 @@ public class PlayGame extends AppCompatActivity {
         openSidebar = true;
     }
 
-    public void closeSideBar() {
-        sidebar = findViewById(R.id.sidebarButtons);
+    public static void closeSideBar() {
+
+        if (!PlayGame.openSidebar){
+            return;
+        }
+
+        sidebar = PlayGame.sidebar.findViewById(R.id.sidebarButtons);
         final int startMargin = 300;
         final int endMargin = 0;
 
@@ -221,13 +227,14 @@ public class PlayGame extends AppCompatActivity {
         animator.setDuration(300);
         animator.start();
 
-        openSidebar = false;
+        PlayGame.openSidebar = false;
     }
 
-    private void updateMargin(int margin) {
-        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) sidebar.getLayoutParams();
-        layoutParams.setMarginStart(margin);
-        sidebar.setLayoutParams(layoutParams);
+
+    private static void updateMargin(int margin) {
+        ViewGroup.MarginLayoutParams sidebarLayoutParams = (ViewGroup.MarginLayoutParams) sidebar.getLayoutParams();
+        sidebarLayoutParams.setMarginStart(margin);
+        sidebar.setLayoutParams(sidebarLayoutParams);
     }
 
     private void setupRecyclerView() {
@@ -247,6 +254,5 @@ public class PlayGame extends AppCompatActivity {
         DropAreaAdapter adapter = new DropAreaAdapter(this, itemsOnScreen);
 
         dropArea.setAdapter(adapter);
-
     }
 }

@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +23,9 @@ import java.util.ArrayList;
  */
 public class SpanishFragment extends Fragment implements ItemRecyclerViewInterface {
 
-    ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
+    static ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
+
+    public static ArrayList<String> items = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,18 +87,31 @@ public class SpanishFragment extends Fragment implements ItemRecyclerViewInterfa
         return view;
     }
 
-    private void setupSpanishAge(){
-        String[] itemNames = getResources().getStringArray(R.array.spanish_era_items);
-
-        for(int i = 0; i<itemNames.length; i++){
+    public static void addItem(String item) {
+        if (!items.contains(item)) {
+            items.add(item);
             try {
                 itemCardsArrayList.add(
                         new ItemCards(
-                                itemNames[i],
-                                Utils.getBitmapFromAssets(itemNames[i]+".png")));
+                                item,
+                                Utils.getBitmapFromAssets(item + ".png")));
+            } catch (IOException e) {
+                Log.e("Failed to get Image", e.toString());
             }
+        }
+    }
 
-            catch (IOException e){
+    public static void setupSpanishAge(){
+        itemCardsArrayList.clear();
+        Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < items.size(); i++) {
+            try {
+                itemCardsArrayList.add(
+                        new ItemCards(
+                                items.get(i),
+                                Utils.getBitmapFromAssets(items.get(i) + ".png")));
+            } catch (IOException e) {
                 Log.e("Failed to get Image", e.toString());
             }
         }

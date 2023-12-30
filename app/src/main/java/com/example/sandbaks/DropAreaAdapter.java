@@ -27,6 +27,16 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
         this.itemCardsArrayList = itemCardsArrayList;
     }
 
+    // Add this method inside your DropAreaAdapter class
+    private int findEmptyPosition() {
+        for (int i = 0; i < itemCardsArrayList.size(); i++) {
+            if (itemCardsArrayList.get(i).getItemName().equals(" ")) {
+                return i; // Found an empty position
+            }
+        }
+        return -1; // No empty position found
+    }
+
     @NonNull
     @Override
     public DropAreaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,6 +56,7 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
     }
 
     public class DropAreaViewHolder extends RecyclerView.ViewHolder {
+
         ImageView itemIcon;
         TextView itemName;
 
@@ -70,7 +81,10 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
 
                     switch (state) {
                         case DragEvent.ACTION_DROP:
+
+                            // If an item already exists on the said screen position
                             if (!itemName.getText().equals(" ")) {
+                                // Combine
                                 ElementsCombination combinations = new ElementsCombination();
                                 combinations.paleolithicAge();
                                 combinations.BronzeAge();
@@ -83,24 +97,76 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
                                 List<String> result = combinations.getCombination(Utils.itemName, itemName.getText().toString());
 
                                 if (result != null) {
-                                    itemName.setText(result.get(0));
 
-                                    try {
-                                        itemIcon.setImageBitmap(Utils.getBitmapFromAssets(result.get(0) + ".png"));
-                                    } catch (IOException e) {
-                                        Log.e("Failed to get Image", e.toString());
+                                    for (String item: result){
+                                        PlayerData.addItemEra(item);
                                     }
 
-                                    ItemCards updatedItem = null;
-                                    try {
-                                        updatedItem = new ItemCards(result.get(0), Utils.getBitmapFromAssets(result.get(0) + ".png"));
-                                    } catch (IOException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    itemCardsArrayList.set(position, updatedItem);
+                                    if (result.size() == 1){
+                                        itemName.setText(result.get(0));
 
+                                        try {
+                                            itemIcon.setImageBitmap(Utils.getBitmapFromAssets(result.get(0) + ".png"));
+                                        } catch (IOException e) {
+                                            Log.e("Failed to get Image", e.toString());
+                                        }
+
+                                        ItemCards updatedItem = null;
+                                        try {
+                                            updatedItem = new ItemCards(result.get(0), Utils.getBitmapFromAssets(result.get(0) + ".png"));
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                        itemCardsArrayList.set(position, updatedItem);
+                                    }
+
+                                    else {
+                                        // Place the first result at the specified position
+                                        itemName.setText(result.get(0));
+                                        try {
+                                            itemIcon.setImageBitmap(Utils.getBitmapFromAssets(result.get(0) + ".png"));
+                                        } catch (IOException e) {
+                                            Log.e("Failed to get Image", e.toString());
+                                        }
+                                        ItemCards updatedItem = null;
+                                        try {
+                                            updatedItem = new ItemCards(result.get(0), Utils.getBitmapFromAssets(result.get(0) + ".png"));
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                        itemCardsArrayList.set(position, updatedItem);
+
+                                        // Place the remaining items anywhere on itemCardsArrayList that has an item with the name as " "
+                                        for (int i = 1; i < result.size(); i++) {
+                                            int emptyPosition = findEmptyPosition();
+                                            if (emptyPosition != -1) {
+                                                try {
+                                                    itemCardsArrayList.set(emptyPosition, new ItemCards(result.get(i), Utils.getBitmapFromAssets(result.get(i) + ".png")));
+                                                } catch (IOException e) {
+                                                    throw new RuntimeException(e);
+                                                }
+                                            } else {
+
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if (Utils.wasOnScreen) {
+                                        // Restore the item to the previous location
+                                        ItemCards updatedItem = new ItemCards(draggedItemName, draggedItemIcon);
+                                        itemCardsArrayList.set(Utils.previousLocation, updatedItem);
+
+                                        // Clear the current position
+                                        itemName.setText(" ");
+                                        itemIcon.setImageBitmap(Utils.createEmptyBitmap());
+
+                                        Utils.wasOnScreen = false;
+                                        Utils.previousLocation = 0;
+                                    }
                                 }
-                            } else {
+                            }
+                            // If there isn't an item yet
+                            else {
                                 itemName.setText(draggedItemName);
                                 itemIcon.setImageBitmap(draggedItemIcon);
 
@@ -122,9 +188,15 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
+
+                    PlayGame.closeSideBar();
+
                     int position = getAdapterPosition();
 
-                    if (position != RecyclerView.NO_POSITION){
+                    Utils.previousLocation = position;
+                    Utils.wasOnScreen = true;
+
+                    if (position != RecyclerView.NO_POSITION) {
                         ClipData clipData;
                         View.DragShadowBuilder dragShadowBuilder = new View.DragShadowBuilder(view);
                         clipData = ClipData.newPlainText(itemName.getText().toString(), null);
@@ -140,6 +212,7 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
                         itemCardsArrayList.set(position, updatedItem);
 
                         view.startDrag(clipData, dragShadowBuilder, view, 0);
+
 
                         notifyDataSetChanged();
 
