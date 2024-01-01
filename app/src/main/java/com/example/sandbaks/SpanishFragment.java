@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -26,6 +25,8 @@ public class SpanishFragment extends Fragment implements ItemRecyclerViewInterfa
     static ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
 
     public static ArrayList<String> items = new ArrayList<>();
+
+    static DBHelper db = new DBHelper();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +66,13 @@ public class SpanishFragment extends Fragment implements ItemRecyclerViewInterfa
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        db.initDB(requireContext());
+        getItems();
+    }
+
+    void getItems(){
+        items = Utils.getItemsFromString(db.getSpanishItems(Utils.userID));
     }
 
     View view;
@@ -78,7 +86,7 @@ public class SpanishFragment extends Fragment implements ItemRecyclerViewInterfa
 
         RecyclerView recyclerView = view.findViewById(R.id.spanishAgeRView);
 
-        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList, this);
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this);
 
         recyclerView.setAdapter(adapter);
 
@@ -88,8 +96,12 @@ public class SpanishFragment extends Fragment implements ItemRecyclerViewInterfa
     }
 
     public static void addItem(String item) {
-        if (!items.contains(item)) {
+        if (!items.contains(item) || items.isEmpty()) {
             items.add(item);
+
+            String updatedItems = Utils.createSeparatedString(items);
+            db.updateSpanishItems(Utils.userID, updatedItems);
+
             try {
                 itemCardsArrayList.add(
                         new ItemCards(

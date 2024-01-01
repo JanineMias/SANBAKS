@@ -23,8 +23,8 @@ import java.util.Collections;
 public class BronzeFragment extends Fragment implements ItemRecyclerViewInterface {
 
     static ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
-
     public static ArrayList<String> items = new ArrayList<>();
+    static DBHelper db = new DBHelper();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,7 +64,15 @@ public class BronzeFragment extends Fragment implements ItemRecyclerViewInterfac
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        db.initDB(requireContext());
+        getItems();
     }
+
+    void getItems(){
+        items = Utils.getItemsFromString(db.getBronzeItems(Utils.userID));
+    }
+
 
     View view;
 
@@ -77,7 +85,7 @@ public class BronzeFragment extends Fragment implements ItemRecyclerViewInterfac
 
         RecyclerView recyclerView = view.findViewById(R.id.bronzeAgeRView);
 
-        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList, this);
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this);
 
         recyclerView.setAdapter(adapter);
 
@@ -87,8 +95,13 @@ public class BronzeFragment extends Fragment implements ItemRecyclerViewInterfac
     }
 
     public static void addItem(String item) {
-        if (!items.contains(item)) {
+        if (!items.contains(item) || items.isEmpty()) {
             items.add(item);
+
+            String updatedItems = Utils.createSeparatedString(items);
+
+            db.updateBronzeItems(Utils.userID, updatedItems);
+
             try {
                 itemCardsArrayList.add(
                         new ItemCards(

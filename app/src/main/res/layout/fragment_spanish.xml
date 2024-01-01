@@ -23,7 +23,7 @@
             android:id="@+id/spanishFrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#E6BF0B1B"
+            android:background="#C42331"
             android:textAlignment="center"
             tools:context=".SpanishFragment">
 

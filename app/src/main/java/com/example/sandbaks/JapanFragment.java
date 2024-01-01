@@ -23,9 +23,8 @@ import java.util.Collections;
 public class JapanFragment extends Fragment implements ItemRecyclerViewInterface{
 
     static ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
-
     public static ArrayList<String> items = new ArrayList<>();
-
+    static DBHelper db = new DBHelper();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +64,13 @@ public class JapanFragment extends Fragment implements ItemRecyclerViewInterface
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        db.initDB(requireContext());
+        getItems();
+    }
+
+    void getItems(){
+        items = Utils.getItemsFromString(db.getJapaneseItems(Utils.userID));
     }
 
     View view;
@@ -78,7 +84,7 @@ public class JapanFragment extends Fragment implements ItemRecyclerViewInterface
 
         RecyclerView recyclerView = view.findViewById(R.id.japanAgeRView);
 
-        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList, this);
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this);
 
         recyclerView.setAdapter(adapter);
 
@@ -88,8 +94,13 @@ public class JapanFragment extends Fragment implements ItemRecyclerViewInterface
     }
 
     public static void addItem(String item) {
-        if (!items.contains(item)) {
+        if (!items.contains(item) || items.isEmpty()) {
             items.add(item);
+
+            String updatedItems = Utils.createSeparatedString(items);
+            Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
+            db.updateJapaneseItems(Utils.userID, updatedItems);
+
             try {
                 itemCardsArrayList.add(
                         new ItemCards(
@@ -102,6 +113,7 @@ public class JapanFragment extends Fragment implements ItemRecyclerViewInterface
     }
 
     public static void setupJapanAge(){
+        itemCardsArrayList.clear();
         Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
 
         for(int i = 0; i<items.size(); i++){

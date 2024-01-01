@@ -79,6 +79,7 @@
     <string-array name="bronze_age_items">
         <item>Axle</item>
         <item>Brick</item>
+        <item>Bronze</item>
         <item>Bronze Tools</item>
         <item>Car</item>
         <item>City</item>
@@ -98,6 +99,7 @@
         <item>Beads</item>
         <item>Coins</item>
         <item>Farming Tools</item>
+        <item>Iron</item>
         <item>Mallet</item>
         <item>Smithing</item>
         <item>Soldiers</item>
@@ -129,6 +131,7 @@
 
     <string name="american_era">American Era</string>
     <string-array name="american_era_items">
+        <item>American</item>
         <item>Architecture</item>
         <item>Boat</item>
         <item>Computer</item>

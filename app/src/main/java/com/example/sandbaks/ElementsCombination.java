@@ -85,17 +85,16 @@ public class ElementsCombination {
 
     void IronAge(){
         // End Goal
-        combinations.put(Arrays.asList("Soldiers", "Spaniards"), List.of("Spanish Era"));
+        combinations.put(Arrays.asList("Human", "Weaponry"), List.of("Soldiers", "Spaniards"));
 
         combinations.put(Arrays.asList("Iron", "Bronze"), List.of("Steel"));
         combinations.put(Arrays.asList("Stone Tools", "Iron"), List.of("Farming Tools"));
         combinations.put(Arrays.asList("Smithing", "Iron"), List.of("Weaponry"));
         combinations.put(Arrays.asList("Iron", "Trade"), List.of("Coins"));
         combinations.put(Arrays.asList("Iron", "Wood"), List.of("Mallet"));
-        combinations.put(Arrays.asList("Mallett", "Iron"), List.of("Smithing"));
+        combinations.put(Arrays.asList("Mallet", "Iron"), List.of("Smithing"));
         combinations.put(Arrays.asList("Glass", "Fire"), List.of("Beads"));
         combinations.put(Arrays.asList("Animal Skin", "Food Stock"), List.of("Trade"));
-        combinations.put(Arrays.asList("Human", "Weaponry"), List.of("Soldiers"));
         Log.e("New Era", "Unlocked Iron Age");
     }
 

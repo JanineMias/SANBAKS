@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -24,6 +23,8 @@ import java.util.Collections;
 public class StoneFragment extends Fragment implements ItemRecyclerViewInterface{
 
     static ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
+
+    static DBHelper db = new DBHelper();
 
     public static ArrayList<String> items = new ArrayList<>();
 
@@ -65,6 +66,13 @@ public class StoneFragment extends Fragment implements ItemRecyclerViewInterface
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        db.initDB(requireContext());
+        getItems();
+    }
+
+    void getItems(){
+        items = Utils.getItemsFromString(db.getStoneItems(Utils.userID));
     }
 
     View view;
@@ -79,7 +87,7 @@ public class StoneFragment extends Fragment implements ItemRecyclerViewInterface
 
         RecyclerView recyclerView = view.findViewById(R.id.stoneAgeRView);
 
-        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList, this);
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this);
 
         recyclerView.setAdapter(adapter);
 
@@ -89,8 +97,13 @@ public class StoneFragment extends Fragment implements ItemRecyclerViewInterface
     }
 
     public static void addItem(String item) {
-        if (!items.contains(item)) {
+        if (!items.contains(item) || items.isEmpty()) {
             items.add(item);
+
+            String updatedItems = Utils.createSeparatedString(items);
+            Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
+            db.updateStoneItems(Utils.userID, updatedItems);
+
             try {
                 itemCardsArrayList.add(
                         new ItemCards(

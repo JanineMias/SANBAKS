@@ -82,7 +82,9 @@ public class AccountCreation extends AppCompatActivity {
         }
 
         // Register user
-        dbHelper.register(username, email, password);
+        dbHelper.register(this, username, email, password);
+
+        Toast.makeText(this, "Account Successfully Created!", Toast.LENGTH_SHORT).show();
 
         Intent backHome = new Intent(AccountCreation.this, AccountSetting.class);
         // pop up will be done if the created account is added to the database

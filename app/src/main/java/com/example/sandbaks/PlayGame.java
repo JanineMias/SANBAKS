@@ -3,7 +3,9 @@ package com.example.sandbaks;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,12 +23,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.time.chrono.Era;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
-    public Button stone, bronze, iron, spanish, american, japan, self;
+    public static Button stone, bronze, iron, spanish, american, japan, self;
     private static boolean openSidebar;
     private String currentMenu = "None";
     static LinearLayout sidebar;
@@ -46,8 +49,8 @@ public class PlayGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playgame);
         setupRecyclerView();
-        PlayerData.initialItems();
         init();
+        EraUnlocker.unlock();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -71,91 +74,112 @@ public class PlayGame extends AppCompatActivity {
 
 
     public void init() {
-        // code for stone fragment
+        loadFragments();
+        setupClickListeners();
+    }
+
+    private void loadFragments() {
+        // Load all fragments initially
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, StoneFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, BronzeFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, IronFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, SpanishFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, AmericanFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, JapanFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, SelfFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void setupClickListeners() {
+        // Set up click listeners for the buttons
         stone = findViewById(R.id.btnStone);
         stone.setOnClickListener(v -> {
+            showFragment(StoneFragment.class);
             sideBar("Stone");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, StoneFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for bronze fragment
+
         bronze = findViewById(R.id.btnBronze);
         bronze.setOnClickListener(v -> {
+            showFragment(BronzeFragment.class);
             sideBar("Bronze");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, BronzeFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for iron fragment
+        bronze.setVisibility(View.INVISIBLE);
+
         iron = findViewById(R.id.btnIron);
         iron.setOnClickListener(v -> {
+            showFragment(IronFragment.class);
             sideBar("Iron");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, IronFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for spanish fragment
+        iron.setVisibility(View.INVISIBLE);
+
         spanish = findViewById(R.id.btnSpanish);
         spanish.setOnClickListener(v -> {
+            showFragment(SpanishFragment.class);
             sideBar("Spanish");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, SpanishFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for american fragment
+        spanish.setVisibility(View.INVISIBLE);
+
         american = findViewById(R.id.btnAmerica);
         american.setOnClickListener(v -> {
+            showFragment(AmericanFragment.class);
             sideBar("American");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, AmericanFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for japan fragment
+        american.setVisibility(View.INVISIBLE);
+
         japan = findViewById(R.id.btnJapan);
         japan.setOnClickListener(v -> {
+            showFragment(JapanFragment.class);
             sideBar("Japan");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, JapanFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for self rule fragment
+        japan.setVisibility(View.INVISIBLE);
+
         self = findViewById(R.id.btnSelf);
         self.setOnClickListener(v -> {
+            showFragment(SelfFragment.class);
             sideBar("Self");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, SelfFragment.class,null)
+        });
+        self.setVisibility(View.INVISIBLE);
+    }
+
+    private void showFragment(Class<? extends Fragment> fragmentClass) {
+        try {
+            Fragment fragment = fragmentClass.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerView, fragment, null)
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .commit();
-        });
-
-
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sideBar(String newMenu){
@@ -189,22 +213,25 @@ public class PlayGame extends AppCompatActivity {
 
     public void openSideBar() {
         sidebar = findViewById(R.id.sidebarButtons);
-        final int startMargin = 0;
+//        final int startMargin = 0;
         final int endMargin = 300;
 
-        ValueAnimator animator = ValueAnimator.ofInt(startMargin, endMargin);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int animatedValue = (int) animation.getAnimatedValue();
-                updateMargin(animatedValue);
-            }
-        });
-        animator.setDuration(300);
-        animator.start();
+        updateMargin(endMargin);
+//        ValueAnimator animator = ValueAnimator.ofInt(startMargin, endMargin);
+//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                int animatedValue = (int) animation.getAnimatedValue();
+//                updateMargin(animatedValue);
+//            }
+//        });
+//        // Decrease the duration for a faster animation (e.g., 150 milliseconds).
+//        animator.setDuration(50);
+//        animator.start();
 
         openSidebar = true;
     }
+
 
     public static void closeSideBar() {
 

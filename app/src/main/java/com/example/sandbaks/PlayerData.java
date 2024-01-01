@@ -32,75 +32,59 @@ public class PlayerData {
         }
     }
 
-    public static void initialItems(){
-        initialStoneItems();
-    }
-
-    public static void initialStoneItems(){
-        addStoneItems("Wood");
-        addStoneItems("Stone");
-        addStoneItems("Air");
-        addStoneItems("Water");
-        addStoneItems("Soil");
-        addStoneItems("Human");
-        addStoneItems("Animal");
-    }
-
     public static void addStoneItems(String item){
         StoneFragment.addItem(item);
         StoneFragment.setupStoneAge();
     }
 
     public static void addBronzeItems(String item){
+        if (item.equalsIgnoreCase("Bronze")){
+            EraUnlocker.unlockBronze();
+        }
         BronzeFragment.addItem(item);
         BronzeFragment.setupBronzeAge();
     }
 
     public static void addIronItems(String item){
+        if (item.equalsIgnoreCase("Iron")){
+            EraUnlocker.unlockIron();
+        }
+
         IronFragment.addItem(item);
         IronFragment.setupIronAge();
     }
 
-    public static void initialSpanishItems(){
-        addStoneItems("Abacus");
-        addStoneItems("Curanderos");
-        addStoneItems("Spaniards");
-        addStoneItems("Nipa Leaf");
-    }
-
     public static void addSpanishItems(String item){
+        if (item.equalsIgnoreCase("Spaniards")){
+            EraUnlocker.unlockSpanish();
+        }
+
         SpanishFragment.addItem(item);
         SpanishFragment.setupSpanishAge();
     }
 
-    public static void initialAmericanItems(){
-        addStoneItems("American");
-        addStoneItems("Car");
-        addStoneItems("Technology");
-    }
-
     public static void addAmericanItems(String item){
+        if (item.equalsIgnoreCase("Education")){
+            EraUnlocker.unlockAmerican();
+        }
+
         AmericanFragment.addItem(item);
         AmericanFragment.setupAmericanAge();
     }
 
-    public static void initialJapaneseItems(){
-        addStoneItems("Literature");
-        addStoneItems("Filipino");
-        addStoneItems("Japanese");
-    }
     public static void addJapaneseItems(String item){
+        if (item.equalsIgnoreCase("Literature")){
+            EraUnlocker.unlockJapan();
+        }
+
         JapanFragment.addItem(item);
         JapanFragment.setupJapanAge();
     }
 
-    public static void initialPHItems(){
-        addStoneItems("Democracy");
-        addStoneItems("Quantum");
-        addStoneItems("PC Chip");
-    }
-
     public static void addPHItems(String item){
+        if (item.equalsIgnoreCase("Democracy")){
+            EraUnlocker.unlockPH();
+        }
         SelfFragment.addItem(item);
         SelfFragment.setupSelfAge();
     }
