@@ -187,6 +187,7 @@ public class PlayGame extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Utils.userName = "Guest";
                 logOut();
             }
         });
