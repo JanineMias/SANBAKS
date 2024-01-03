@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Homepage"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ItemRecipes"
+            android:exported="false" />
         <activity
             android:name=".PlayGame"
             android:exported="false" />

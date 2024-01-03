@@ -1,5 +1,6 @@
 package com.example.sandbaks;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -85,7 +86,7 @@ public class BronzeFragment extends Fragment implements ItemRecyclerViewInterfac
 
         RecyclerView recyclerView = view.findViewById(R.id.bronzeAgeRView);
 
-        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this);
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this, Color.WHITE);
 
         recyclerView.setAdapter(adapter);
 

@@ -18,11 +18,13 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     private final ItemRecyclerViewInterface itemRecyclerViewInterface;
     Context context;
     ArrayList<ItemCards> itemCardsArrayList;
+    int color;
 
-    public ItemRecyclerViewAdapter(Context context, ArrayList<ItemCards> itemCardsArrayList, ItemRecyclerViewInterface itemRecyclerViewInterface){
+    public ItemRecyclerViewAdapter(Context context, ArrayList<ItemCards> itemCardsArrayList, ItemRecyclerViewInterface itemRecyclerViewInterface, int color){
         this.context = context;
         this.itemCardsArrayList = itemCardsArrayList;
         this.itemRecyclerViewInterface = itemRecyclerViewInterface;
+        this.color = color;
     }
 
     @NonNull
@@ -37,6 +39,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull ItemRecyclerViewAdapter.MyViewHolder holder, int position) {
         holder.itemName.setText(itemCardsArrayList.get(position).getItemName());
+        holder.itemName.setTextColor(this.color);
         holder.itemIcon.setImageBitmap(itemCardsArrayList.get(position).getImage());
     }
 

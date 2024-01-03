@@ -3,6 +3,7 @@ package com.example.sandbaks;
 import android.content.ClipData;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
@@ -27,14 +28,14 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
         this.itemCardsArrayList = itemCardsArrayList;
     }
 
-    // Add this method inside your DropAreaAdapter class
+
     private int findEmptyPosition() {
         for (int i = 0; i < itemCardsArrayList.size(); i++) {
             if (itemCardsArrayList.get(i).getItemName().equals(" ")) {
-                return i; // Found an empty position
+                return i;
             }
         }
-        return -1; // No empty position found
+        return -1;
     }
 
     @NonNull
@@ -47,6 +48,7 @@ public class DropAreaAdapter extends RecyclerView.Adapter<DropAreaAdapter.DropAr
     @Override
     public void onBindViewHolder(@NonNull DropAreaViewHolder holder, int position) {
         holder.itemName.setText(itemCardsArrayList.get(position).getItemName());
+        holder.itemName.setTextColor(Color.WHITE);
         holder.itemIcon.setImageBitmap(itemCardsArrayList.get(position).getImage());
     }
 

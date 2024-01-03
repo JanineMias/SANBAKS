@@ -22,12 +22,16 @@ public class ElementsCombination {
         return this.combinations.get(key);
     }
 
+    public HashMap<List<String>, List<String>> getAllCombinations(){
+        return combinations;
+    }
+
     void paleolithicAge(){
         // End Goal
         combinations.put(Arrays.asList("Copper", "Metallurgy"), List.of("Bronze"));
 
         combinations.put(Arrays.asList("Wood", "Wood"), List.of("Fire"));
-        combinations.put(Arrays.asList("Soil", "Water"), List.of("Mud"));
+        combinations.put(Arrays.asList("Soil", "Water"), List.of("Mud", "Time"));
         combinations.put(Arrays.asList("Wood", "Stone"), List.of("Stone Tools"));
         combinations.put(Arrays.asList("Mud", "Fire"), List.of("Clay"));
         combinations.put(Arrays.asList("Stone", "Stone"), List.of("Sand"));
@@ -113,7 +117,7 @@ public class ElementsCombination {
         combinations.put(Arrays.asList("Human", "Religion"), List.of("Parish"));
         combinations.put(Arrays.asList("School", "Spaniards"), List.of("Teachers"));
         combinations.put(Arrays.asList("Spaniards", "Book"), List.of("Religious Text"));
-        combinations.put(Arrays.asList("Paper", "Paper"), List.of("Book"));
+        combinations.put(Arrays.asList("Paper", "Paper"), List.of("Book", "Telephone"));
         combinations.put(Arrays.asList("Air", "Car"), List.of("Plane"));
         Log.e("New Era", "Unlocked Spanish Era");
     }
@@ -132,7 +136,6 @@ public class ElementsCombination {
         combinations.put(Arrays.asList("Steam", "Food Stock"), List.of("Processed Food"));
         combinations.put(Arrays.asList("Technology", "Abacus"), List.of("Computer"));
         combinations.put(Arrays.asList("American", "Time"), List.of("Japanese"));
-        combinations.put(Arrays.asList("Japanese", "Education"), List.of("Literature"));
         Log.e("New Era", "Unlocked America Era");
     }
 

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -29,7 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
-    public static Button stone, bronze, iron, spanish, american, japan, self;
+    public static Button stone, bronze, iron, spanish, american, japan, self, itemRecipe;
     private static boolean openSidebar;
     private String currentMenu = "None";
     static LinearLayout sidebar;
@@ -167,6 +168,19 @@ public class PlayGame extends AppCompatActivity {
             sideBar("Self");
         });
         self.setVisibility(View.INVISIBLE);
+
+        itemRecipe = findViewById(R.id.recipeButton);
+        itemRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRecipes();
+            }
+        });
+    }
+
+    void openRecipes(){
+        Intent intent = new Intent(this, ItemRecipes.class);
+        startActivity(intent);
     }
 
     private void showFragment(Class<? extends Fragment> fragmentClass) {
@@ -213,22 +227,9 @@ public class PlayGame extends AppCompatActivity {
 
     public void openSideBar() {
         sidebar = findViewById(R.id.sidebarButtons);
-//        final int startMargin = 0;
         final int endMargin = 300;
 
         updateMargin(endMargin);
-//        ValueAnimator animator = ValueAnimator.ofInt(startMargin, endMargin);
-//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//                int animatedValue = (int) animation.getAnimatedValue();
-//                updateMargin(animatedValue);
-//            }
-//        });
-//        // Decrease the duration for a faster animation (e.g., 150 milliseconds).
-//        animator.setDuration(50);
-//        animator.start();
-
         openSidebar = true;
     }
 
@@ -266,12 +267,12 @@ public class PlayGame extends AppCompatActivity {
 
     private void setupRecyclerView() {
         RecyclerView dropArea = findViewById(R.id.dropSpace);
-        GridLayoutManager grid = new GridLayoutManager(this, 4);
+        GridLayoutManager grid = new GridLayoutManager(this, 3);
 
         dropArea.setLayoutManager(grid);
 
 
-        for(int i=0; i<200; i++){
+        for(int i=0; i<300; i++){
             itemsOnScreen.add(
                     new ItemCards(
                             " ",

@@ -102,7 +102,6 @@
         <item>Iron</item>
         <item>Mallet</item>
         <item>Smithing</item>
-        <item>Soldiers</item>
         <item>Trade</item>
         <item>Weaponry</item>
     </string-array>
@@ -123,7 +122,9 @@
         <item>Plants</item>
         <item>Religion</item>
         <item>Religious Text</item>
+        <item>School</item>
         <item>Scholar</item>
+        <item>Soldiers</item>
         <item>Spaniards</item>
         <item>Teachers</item>
         <item>Telephone</item>
@@ -135,6 +136,7 @@
         <item>Architecture</item>
         <item>Boat</item>
         <item>Computer</item>
+        <item>Education</item>
         <item>English</item>
         <item>Pager</item>
         <item>Port</item>
@@ -146,7 +148,6 @@
     <string name="japanese_occupation">Japanese Occupation</string>
     <string-array name="japanese_occupation_items">
         <item>Cotton</item>
-        <item>Democracy</item>
         <item>Filipino Literature</item>
         <item>Filipino</item>
         <item>Guerilla</item>
@@ -162,9 +163,9 @@
 
     <string name="philippine_commonwealth_self_rule">Philippine Commonwealth (Self Rule)</string>
     <string-array name="philippine_commonwealth_items">
-
         <item>Artificial Intelligence</item>
         <item>Camera</item>
+        <item>Democracy</item>
         <item>PC Chip</item>
         <item>Quantum</item>
         <item>Rocket</item>

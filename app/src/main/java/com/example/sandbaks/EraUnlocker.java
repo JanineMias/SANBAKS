@@ -15,31 +15,31 @@ public class EraUnlocker {
         ArrayList<String> eras = Utils.getItemsFromString(era);
 
         if (eras.contains("Bronze")){
-            unlockBronze();
+            unlockBronze(true);
         }
 
         if (eras.contains("Iron")){
-            unlockIron();
+            unlockIron(true);
         }
 
         if (eras.contains("Spanish")){
-            unlockSpanish();
+            unlockSpanish(true);
         }
 
         if (eras.contains("American")){
-            unlockAmerican();
+            unlockAmerican(true);
         }
 
         if (eras.contains("Japan")){
-            unlockJapan();
+            unlockJapan(true);
         }
 
         if (eras.contains("PH")){
-            unlockPH();
+            unlockPH(true);
         }
     }
 
-    public static void unlockBronze(){
+    public static void unlockBronze(boolean fromDB){
         if (PlayGame.bronze.getVisibility() == View.VISIBLE){
             return;
         }
@@ -48,10 +48,13 @@ public class EraUnlocker {
 
         String era = db.getUserEra(Utils.userID);
         db.updateEra(Utils.userID, era+"|Bronze");
-        Toast.makeText(MainActivity.context, "Bronze Age Unlocked!", Toast.LENGTH_SHORT).show();
+
+        if(!fromDB){
+            Toast.makeText(MainActivity.context, "Bronze Age Unlocked!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public static void unlockIron(){
+    public static void unlockIron(boolean fromDB){
         if (PlayGame.iron.getVisibility() == View.VISIBLE){
             return;
         }
@@ -60,10 +63,13 @@ public class EraUnlocker {
 
         String era = db.getUserEra(Utils.userID);
         db.updateEra(Utils.userID, era+"|Iron");
-        Toast.makeText(MainActivity.context, "Iron Age Unlocked!", Toast.LENGTH_SHORT).show();
+
+        if (!fromDB){
+            Toast.makeText(MainActivity.context, "Iron Age Unlocked!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public static void unlockSpanish(){
+    public static void unlockSpanish(boolean fromDB){
         if (PlayGame.spanish.getVisibility() == View.VISIBLE){
             return;
         }
@@ -72,10 +78,13 @@ public class EraUnlocker {
 
         String era = db.getUserEra(Utils.userID);
         db.updateEra(Utils.userID, era+"|Spanish");
-        Toast.makeText(MainActivity.context, "Spanish Era Unlocked!", Toast.LENGTH_SHORT).show();
+
+        if (!fromDB){
+            Toast.makeText(MainActivity.context, "Spanish Era Unlocked!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public static void unlockAmerican(){
+    public static void unlockAmerican(boolean fromDB){
         if (PlayGame.american.getVisibility() == View.VISIBLE){
             return;
         }
@@ -84,10 +93,13 @@ public class EraUnlocker {
 
         String era = db.getUserEra(Utils.userID);
         db.updateEra(Utils.userID, era+"|American");
-        Toast.makeText(MainActivity.context, "American Era Unlocked!", Toast.LENGTH_SHORT).show();
+
+        if (!fromDB){
+            Toast.makeText(MainActivity.context, "American Era Unlocked!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public static void unlockJapan(){
+    public static void unlockJapan(boolean fromDB){
         if (PlayGame.japan.getVisibility() == View.VISIBLE){
             return;
         }
@@ -96,10 +108,13 @@ public class EraUnlocker {
 
         String era = db.getUserEra(Utils.userID);
         db.updateEra(Utils.userID, era+"|Japan");
-        Toast.makeText(MainActivity.context, "Japanese Era Unlocked!", Toast.LENGTH_SHORT).show();
+
+        if (!fromDB){
+            Toast.makeText(MainActivity.context, "Japanese Era Unlocked!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public static void unlockPH(){
+    public static void unlockPH(boolean fromDB){
         if (PlayGame.self.getVisibility() == View.VISIBLE){
             return;
         }
@@ -108,6 +123,9 @@ public class EraUnlocker {
 
         String era = db.getUserEra(Utils.userID);
         db.updateEra(Utils.userID, era+"|PH");
-        Toast.makeText(MainActivity.context, "Self Rule Era Unlocked!", Toast.LENGTH_SHORT).show();
+
+        if (!fromDB){
+            Toast.makeText(MainActivity.context, "Self Rule Era Unlocked!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

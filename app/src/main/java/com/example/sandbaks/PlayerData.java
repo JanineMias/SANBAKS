@@ -39,7 +39,7 @@ public class PlayerData {
 
     public static void addBronzeItems(String item){
         if (item.equalsIgnoreCase("Bronze")){
-            EraUnlocker.unlockBronze();
+            EraUnlocker.unlockBronze(false);
         }
         BronzeFragment.addItem(item);
         BronzeFragment.setupBronzeAge();
@@ -47,7 +47,7 @@ public class PlayerData {
 
     public static void addIronItems(String item){
         if (item.equalsIgnoreCase("Iron")){
-            EraUnlocker.unlockIron();
+            EraUnlocker.unlockIron(false);
         }
 
         IronFragment.addItem(item);
@@ -56,7 +56,7 @@ public class PlayerData {
 
     public static void addSpanishItems(String item){
         if (item.equalsIgnoreCase("Spaniards")){
-            EraUnlocker.unlockSpanish();
+            EraUnlocker.unlockSpanish(false);
         }
 
         SpanishFragment.addItem(item);
@@ -65,7 +65,7 @@ public class PlayerData {
 
     public static void addAmericanItems(String item){
         if (item.equalsIgnoreCase("Education")){
-            EraUnlocker.unlockAmerican();
+            EraUnlocker.unlockAmerican(false);
         }
 
         AmericanFragment.addItem(item);
@@ -74,7 +74,7 @@ public class PlayerData {
 
     public static void addJapaneseItems(String item){
         if (item.equalsIgnoreCase("Literature")){
-            EraUnlocker.unlockJapan();
+            EraUnlocker.unlockJapan(false);
         }
 
         JapanFragment.addItem(item);
@@ -83,7 +83,7 @@ public class PlayerData {
 
     public static void addPHItems(String item){
         if (item.equalsIgnoreCase("Democracy")){
-            EraUnlocker.unlockPH();
+            EraUnlocker.unlockPH(false);
         }
         SelfFragment.addItem(item);
         SelfFragment.setupSelfAge();
