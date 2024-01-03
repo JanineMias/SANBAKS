@@ -20,7 +20,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -31,9 +33,12 @@ import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
     public static Button stone, bronze, iron, spanish, american, japan, self, itemRecipe;
+    ImageButton logOut;
     private static boolean openSidebar;
     private String currentMenu = "None";
     static LinearLayout sidebar;
+
+    public static TextView goalText;
 
     ArrayList<ItemCards> itemsOnScreen = new ArrayList<>();
 
@@ -75,6 +80,7 @@ public class PlayGame extends AppCompatActivity {
 
 
     public void init() {
+        goalText = findViewById(R.id.goalText);
         loadFragments();
         setupClickListeners();
     }
@@ -176,10 +182,23 @@ public class PlayGame extends AppCompatActivity {
                 openRecipes();
             }
         });
+
+        logOut = findViewById(R.id.logOutButton);
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logOut();
+            }
+        });
     }
 
     void openRecipes(){
         Intent intent = new Intent(this, ItemRecipes.class);
+        startActivity(intent);
+    }
+
+    void logOut(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

@@ -52,6 +52,8 @@ public class EraUnlocker {
         if(!fromDB){
             Toast.makeText(MainActivity.context, "Bronze Age Unlocked!", Toast.LENGTH_SHORT).show();
         }
+
+        PlayGame.goalText.setText("Current Goal: Unlock Iron");
     }
 
     public static void unlockIron(boolean fromDB){
@@ -67,6 +69,8 @@ public class EraUnlocker {
         if (!fromDB){
             Toast.makeText(MainActivity.context, "Iron Age Unlocked!", Toast.LENGTH_SHORT).show();
         }
+
+        PlayGame.goalText.setText("Current Goal: Unlock Spaniards");
     }
 
     public static void unlockSpanish(boolean fromDB){
@@ -82,6 +86,8 @@ public class EraUnlocker {
         if (!fromDB){
             Toast.makeText(MainActivity.context, "Spanish Era Unlocked!", Toast.LENGTH_SHORT).show();
         }
+
+        PlayGame.goalText.setText("Current Goal: Unlock Education");
     }
 
     public static void unlockAmerican(boolean fromDB){
@@ -97,6 +103,8 @@ public class EraUnlocker {
         if (!fromDB){
             Toast.makeText(MainActivity.context, "American Era Unlocked!", Toast.LENGTH_SHORT).show();
         }
+
+        PlayGame.goalText.setText("Current Goal: Unlock Literature");
     }
 
     public static void unlockJapan(boolean fromDB){
@@ -112,6 +120,8 @@ public class EraUnlocker {
         if (!fromDB){
             Toast.makeText(MainActivity.context, "Japanese Era Unlocked!", Toast.LENGTH_SHORT).show();
         }
+
+        PlayGame.goalText.setText("Current Goal: Unlock Democracy");
     }
 
     public static void unlockPH(boolean fromDB){
@@ -127,5 +137,7 @@ public class EraUnlocker {
         if (!fromDB){
             Toast.makeText(MainActivity.context, "Self Rule Era Unlocked!", Toast.LENGTH_SHORT).show();
         }
+
+        PlayGame.goalText.setText("Current Goal: Discover Other Elements");
     }
 }
