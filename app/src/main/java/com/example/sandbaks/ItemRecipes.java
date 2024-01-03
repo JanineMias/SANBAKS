@@ -5,7 +5,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,6 +23,7 @@ public class ItemRecipes extends AppCompatActivity {
     private ElementsCombination combinations = new ElementsCombination();
     private HashMap<List<String>, List<String>> allCombinations = new HashMap<>();
     private ArrayList<ItemRecipeCards> itemRecipeCardsArrayList = new ArrayList<>();
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,19 @@ public class ItemRecipes extends AppCompatActivity {
                 return true;
             }
         });
+
+        back = findViewById(R.id.backButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backToGame();
+            }
+        });
+    }
+
+    void backToGame(){
+        Intent intent = new Intent(this, PlayGame.class);
+        startActivity(intent);
     }
 
     void setupItemRecipes(){

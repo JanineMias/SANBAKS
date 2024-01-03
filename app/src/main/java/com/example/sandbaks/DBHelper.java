@@ -131,7 +131,13 @@ public class DBHelper {
         // Check if the entered password is valid
         // Login successful
         // Login failed
-        return storedHashedPassword != null && Utils.validPassword(password, storedHashedPassword);
+
+        if (storedHashedPassword != null && Utils.validPassword(password, storedHashedPassword)){
+            Utils.userName = username;
+            return true;
+        }
+
+        return false;
     }
 
     public void createUserEraTable() {

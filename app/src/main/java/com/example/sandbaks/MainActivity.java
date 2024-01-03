@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void init() {
-
         context = MainActivity.this;
 
         space = findViewById(R.id.background);
@@ -50,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         play = findViewById(R.id.btnPlay);
         account = findViewById(R.id.btnAccount);
         user = findViewById(R.id.tvIGN);
+
+        user.setText(Utils.userName);
 
         username = user.getText().toString();
 
