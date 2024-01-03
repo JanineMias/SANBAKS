@@ -1,21 +1,33 @@
 package com.example.sandbaks;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AmericanFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AmericanFragment extends Fragment {
+public class AmericanFragment extends Fragment implements ItemRecyclerViewInterface{
 
-    // TODO: Rename parameter arguments, choose names that match
+    static ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
+    public static ArrayList<String> items = new ArrayList<>();
+
+    static DBHelper db = new DBHelper();
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -53,12 +65,71 @@ public class AmericanFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        db.initDB(requireContext());
+        getItems();
     }
+
+    void getItems(){
+        items = Utils.getItemsFromString(db.getAmericanItems(Utils.userID));
+    }
+
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_american, container, false);
+        view = inflater.inflate(R.layout.fragment_american, container, false);
+
+        setupAmericanAge();
+
+        RecyclerView recyclerView = view.findViewById(R.id.americanAgeRView);
+
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this, Color.WHITE);
+
+        recyclerView.setAdapter(adapter);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.context));
+
+        return view;
+    }
+
+    public static void addItem(String item) {
+        if (!items.contains(item) || items.isEmpty()) {
+            items.add(item);
+
+            String updatedItems = Utils.createSeparatedString(items);
+            db.updateAmericanItems(Utils.userID, updatedItems);
+            try {
+                itemCardsArrayList.add(
+                        new ItemCards(
+                                item,
+                                Utils.getBitmapFromAssets(item + ".png")));
+            } catch (IOException e) {
+                Log.e("Failed to get Image", e.toString());
+            }
+        }
+    }
+
+    public static void setupAmericanAge(){
+        itemCardsArrayList.clear();
+        Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < items.size(); i++) {
+            try {
+                itemCardsArrayList.add(
+                        new ItemCards(
+                                items.get(i),
+                                Utils.getBitmapFromAssets(items.get(i) + ".png")));
+            } catch (IOException e) {
+                Log.e("Failed to get Image", e.toString());
+            }
+        }
+    }
+
+    @Override
+    public void onItemSelected(int position) {
+
     }
 }

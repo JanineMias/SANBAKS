@@ -24,7 +24,6 @@
             android:id="@+id/stoneFrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#E6F1DFCC"
             tools:context=".StoneFragment">
 
             <LinearLayout

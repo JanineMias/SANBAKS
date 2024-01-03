@@ -2,13 +2,18 @@ package com.example.sandbaks;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,14 +23,19 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.time.chrono.Era;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
-    public Button stone, bronze, iron, spanish, american, japan, self;
-    private boolean openSidebar;
+    public static Button stone, bronze, iron, spanish, american, japan, self, itemRecipe;
+    private static boolean openSidebar;
     private String currentMenu = "None";
-    LinearLayout sidebar;
+    static LinearLayout sidebar;
+
+    ArrayList<ItemCards> itemsOnScreen = new ArrayList<>();
 
     // menu setup
     @Override
@@ -40,7 +50,8 @@ public class PlayGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playgame);
         setupRecyclerView();
-        init ();
+        init();
+        EraUnlocker.unlock();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -64,91 +75,125 @@ public class PlayGame extends AppCompatActivity {
 
 
     public void init() {
-        // code for stone fragment
+        loadFragments();
+        setupClickListeners();
+    }
+
+    private void loadFragments() {
+        // Load all fragments initially
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, StoneFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, BronzeFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, IronFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, SpanishFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, AmericanFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, JapanFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, SelfFragment.class, null)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void setupClickListeners() {
+        // Set up click listeners for the buttons
         stone = findViewById(R.id.btnStone);
         stone.setOnClickListener(v -> {
+            showFragment(StoneFragment.class);
             sideBar("Stone");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, StoneFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for bronze fragment
+
         bronze = findViewById(R.id.btnBronze);
         bronze.setOnClickListener(v -> {
+            showFragment(BronzeFragment.class);
             sideBar("Bronze");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, BronzeFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for iron fragment
+        bronze.setVisibility(View.INVISIBLE);
+
         iron = findViewById(R.id.btnIron);
         iron.setOnClickListener(v -> {
+            showFragment(IronFragment.class);
             sideBar("Iron");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, IronFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for spanish fragment
+        iron.setVisibility(View.INVISIBLE);
+
         spanish = findViewById(R.id.btnSpanish);
         spanish.setOnClickListener(v -> {
+            showFragment(SpanishFragment.class);
             sideBar("Spanish");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, SpanishFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for american fragment
+        spanish.setVisibility(View.INVISIBLE);
+
         american = findViewById(R.id.btnAmerica);
         american.setOnClickListener(v -> {
+            showFragment(AmericanFragment.class);
             sideBar("American");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, AmericanFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for japan fragment
+        american.setVisibility(View.INVISIBLE);
+
         japan = findViewById(R.id.btnJapan);
         japan.setOnClickListener(v -> {
+            showFragment(JapanFragment.class);
             sideBar("Japan");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, JapanFragment.class,null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .commit();
         });
-        // code for self rule fragment
+        japan.setVisibility(View.INVISIBLE);
+
         self = findViewById(R.id.btnSelf);
         self.setOnClickListener(v -> {
+            showFragment(SelfFragment.class);
             sideBar("Self");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView, SelfFragment.class,null)
+        });
+        self.setVisibility(View.INVISIBLE);
+
+        itemRecipe = findViewById(R.id.recipeButton);
+        itemRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRecipes();
+            }
+        });
+    }
+
+    void openRecipes(){
+        Intent intent = new Intent(this, ItemRecipes.class);
+        startActivity(intent);
+    }
+
+    private void showFragment(Class<? extends Fragment> fragmentClass) {
+        try {
+            Fragment fragment = fragmentClass.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerView, fragment, null)
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .commit();
-        });
-
-
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sideBar(String newMenu){
@@ -182,25 +227,20 @@ public class PlayGame extends AppCompatActivity {
 
     public void openSideBar() {
         sidebar = findViewById(R.id.sidebarButtons);
-        final int startMargin = 0;
         final int endMargin = 300;
 
-        ValueAnimator animator = ValueAnimator.ofInt(startMargin, endMargin);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int animatedValue = (int) animation.getAnimatedValue();
-                updateMargin(animatedValue);
-            }
-        });
-        animator.setDuration(300);
-        animator.start();
-
+        updateMargin(endMargin);
         openSidebar = true;
     }
 
-    public void closeSideBar() {
-        sidebar = findViewById(R.id.sidebarButtons);
+
+    public static void closeSideBar() {
+
+        if (!PlayGame.openSidebar){
+            return;
+        }
+
+        sidebar = PlayGame.sidebar.findViewById(R.id.sidebarButtons);
         final int startMargin = 300;
         final int endMargin = 0;
 
@@ -215,81 +255,32 @@ public class PlayGame extends AppCompatActivity {
         animator.setDuration(300);
         animator.start();
 
-        openSidebar = false;
+        PlayGame.openSidebar = false;
     }
 
-    private void updateMargin(int margin) {
-        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) sidebar.getLayoutParams();
-        layoutParams.setMarginStart(margin);
-        sidebar.setLayoutParams(layoutParams);
+
+    private static void updateMargin(int margin) {
+        ViewGroup.MarginLayoutParams sidebarLayoutParams = (ViewGroup.MarginLayoutParams) sidebar.getLayoutParams();
+        sidebarLayoutParams.setMarginStart(margin);
+        sidebar.setLayoutParams(sidebarLayoutParams);
     }
 
     private void setupRecyclerView() {
-
         RecyclerView dropArea = findViewById(R.id.dropSpace);
-
-        GridLayoutManager grid = new GridLayoutManager(this, 5);
-
-        // This is just a test place holder, 200 PLACE HOLDER
-        // Set up your data (list of drawables or other data)
-        List<Integer> dataList = Arrays.asList(
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron,
-                R.drawable.bronze, R.drawable.iron, R.drawable.bronze, R.drawable.iron
-                );
+        GridLayoutManager grid = new GridLayoutManager(this, 3);
 
         dropArea.setLayoutManager(grid);
 
-        DropAreaAdapter adapter = new DropAreaAdapter(this, dataList);
+
+        for(int i=0; i<300; i++){
+            itemsOnScreen.add(
+                    new ItemCards(
+                            " ",
+                            Utils.createEmptyBitmap()));
+        }
+
+        DropAreaAdapter adapter = new DropAreaAdapter(this, itemsOnScreen);
 
         dropArea.setAdapter(adapter);
-
     }
 }

@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FEFAFD">
 
-    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/japanFrag"
+    <TextView
+        android:id="@+id/text6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E6FFFFFF"
-        tools:context=".JapanFragment">
+        android:text="@string/japanese_occupation"
+        android:textAlignment="center" />
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text6">
+
+        <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/japanFrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/japanese_occupation"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            tools:context=".JapanFragment">
 
-    </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:textAlignment="center">
 
-</ScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/japanAgeRView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+</RelativeLayout>

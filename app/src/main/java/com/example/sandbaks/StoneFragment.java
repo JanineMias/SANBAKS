@@ -1,8 +1,6 @@
 package com.example.sandbaks;
 
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +23,11 @@ import java.util.ArrayList;
  */
 public class StoneFragment extends Fragment implements ItemRecyclerViewInterface{
 
-    ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
+    static ArrayList<ItemCards> itemCardsArrayList = new ArrayList<>();
+
+    static DBHelper db = new DBHelper();
+
+    public static ArrayList<String> items = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +67,13 @@ public class StoneFragment extends Fragment implements ItemRecyclerViewInterface
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        db.initDB(requireContext());
+        getItems();
+    }
+
+    void getItems(){
+        items = Utils.getItemsFromString(db.getStoneItems(Utils.userID));
     }
 
     View view;
@@ -79,7 +88,7 @@ public class StoneFragment extends Fragment implements ItemRecyclerViewInterface
 
         RecyclerView recyclerView = view.findViewById(R.id.stoneAgeRView);
 
-        ItemRecyclerViewAdapater adapter = new ItemRecyclerViewAdapater(MainActivity.context, itemCardsArrayList, this);
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(MainActivity.context, itemCardsArrayList, this, Color.BLACK);
 
         recyclerView.setAdapter(adapter);
 
@@ -88,23 +97,41 @@ public class StoneFragment extends Fragment implements ItemRecyclerViewInterface
         return view;
     }
 
+    public static void addItem(String item) {
+        if (!items.contains(item) || items.isEmpty()) {
+            items.add(item);
 
-    private void setupStoneAge(){
-        String[] itemNames = getResources().getStringArray(R.array.stone_age_items);
+            String updatedItems = Utils.createSeparatedString(items);
+            Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
+            db.updateStoneItems(Utils.userID, updatedItems);
 
-        for(int i = 0; i<itemNames.length; i++){
             try {
                 itemCardsArrayList.add(
                         new ItemCards(
-                                itemNames[i],
-                                Utils.getBitmapFromAssets("1. Stone Age/"+itemNames[i]+".png")));
-            }
-
-            catch (IOException e){
+                                item,
+                                Utils.getBitmapFromAssets(item + ".png")));
+            } catch (IOException e) {
                 Log.e("Failed to get Image", e.toString());
             }
         }
     }
+
+    public static void setupStoneAge() {
+        itemCardsArrayList.clear();
+        Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < items.size(); i++) {
+            try {
+                itemCardsArrayList.add(
+                        new ItemCards(
+                                items.get(i),
+                                Utils.getBitmapFromAssets(items.get(i) + ".png")));
+            } catch (IOException e) {
+                Log.e("Failed to get Image", e.toString());
+            }
+        }
+    }
+
     @Override
     public void onItemSelected(int position) {
 
