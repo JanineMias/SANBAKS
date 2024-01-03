@@ -27,7 +27,7 @@
                 android:id="@+id/itemIcon"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                app:srcCompat="@drawable/bronze" />
+                app:srcCompat="@drawable/c04" />
 
             <TextView
                 android:id="@+id/itemName"
